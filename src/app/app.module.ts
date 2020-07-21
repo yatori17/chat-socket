@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {ChatService} from './core/chat.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     FormsModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NoopAnimationsModule
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]

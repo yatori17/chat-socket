@@ -4,4 +4,5 @@
     display: flex;
     overflow-y: scroll;
     position: relative;
+    width: 300px;
 }
