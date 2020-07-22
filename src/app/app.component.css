@@ -1,8 +1,8 @@
 
   .scroll {
     max-height: 300px;
-    display: flex;
-    overflow-y: scroll;
+    overflow: scroll;
     position: relative;
-    width: 300px;
+    
+    
 }

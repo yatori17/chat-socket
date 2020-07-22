@@ -19,17 +19,14 @@ export class ChatService {
     public getStatus= () => {
         return Observable.create((observer)=>{
             this.socket.on('roomUsers',(status) =>{
-                console.log(status)
                 observer.next(status);
             })
         })
     }
     
     public getMessages = () =>{
-        console.log("AQUI")
         return Observable.create((observer)=>{
             this.socket.on('new-message', (message) =>{
-                console.log(message)
                 observer.next(message);
             })
         })

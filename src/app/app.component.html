@@ -1,32 +1,50 @@
 <h1>Chat</h1>
 <ng-template [ngIf]="online">
 
-<div class="card bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header" style="background-color: #5800fb;text-align: center;" >Chat</div>
-  <div class= "scroll">
-  <div class="card-body">
-    <div *ngFor = "let user of users[0].users">
-      <p><fa-icon [icon]="faCircle" style="color: green;"></fa-icon> {{user.username}} is online</p>
-    </div> 
-    <div *ngFor = "let message of messages">
-    <div class='header'style="background-color: white"> 
+<div class="card bg-light mb-3" style="max-width: 25rem;">
+  <div class="card-header" style="text-align: center;" >Chat</div> 
+    <div>
+      <button (click)="showElement">
+        esconde
+      </button>
+    </div>
+    <span><button (click)= 'hide()' class='btn btn-info'><i class="fa fa-users" aria-hidden="true"></i>
+      Users</button></span>
+    <div *ngIf="show">
+      <ng-template [ngIf]=users.length>
+      <li *ngFor = "let user of users[users.length-1].users">
+        <ol>
+          <i class="fa fa-circle" style="color: green;" ></i>
+          {{user.username}}
+        </ol>
+      </li> 
+    </ng-template>
+    </div>
+  
+    <div class= "scroll">
+      <div class="card-body" >
+      
+      <div *ngFor = "let message of messages">
+        <p style="background-color: white; ">[{{message.time}}] <strong>{{message.username}}</strong>: {{message.text}}</p>
+      </div>
+    <!-- <div class='header'style="background-color: white"> 
       <div class="card border-dark mb-3" style="max-width: 18rem;">
         <div class="card-header"><fa-icon [icon]="faUser" style="color: grey;"></fa-icon> {{message.username}}</div>
         <div class="card-body text-dark">
           <p class="card-text">{{message.text}}</p>
         </div>
       </div>
-  </div>
-  </div>
-  <div>
-    <input [(ngModel)]= "message.content" (keyup)="$event.keyCode ==13 && sendMessage()"/>
-    <button class="btn btn-primary" (click)= "sendMessage()">Send</button>
-  </div>
+  </div> -->
+      
+    <div>
+      <input [(ngModel)]= "message.content" (keyup)="$event.keyCode ==13 && sendMessage()"/>
+      <button class="btn btn-primary" (click)= "sendMessage()">Send</button>
+    </div>
   </div>
   
+  </div>
 </div>
-</div>
-<div class="card" style="width: 300px;">
+<!-- <div class="card" style="width: 300px;">
   <div class="card-header" style="background-color: #5800fb;text-align: center;" >Ranking</div>
 
   <div class="scroll">
@@ -52,7 +70,7 @@
     </tbody>
   </table>
 </div>
-</div>
+</div> -->
 
 </ng-template>
 <ng-template [ngIf]="!online">

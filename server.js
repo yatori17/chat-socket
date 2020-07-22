@@ -27,11 +27,11 @@ io.on('connection', (socket)=>{
 
 
         //Messages to the actual user
-        socket.emit('new-message', formatMessage('', "Welcome to the chat"));
+        socket.emit('new-message', formatMessage('bot', `Welcome to the chat, ${user.username}`));
         //message to the people of the chat
         socket.broadcast.to(user.room)
         .emit(
-            'new-message',formatMessage(user.username, "has joined the meeting"));
+            'new-message',formatMessage("bot", `${user.username} has joined the meeting`));
 
         io.to(user.room).emit('roomUsers',{
             room: user.room,
@@ -53,7 +53,7 @@ io.on('connection', (socket)=>{
 
         if(user){
             io.to(user.room).emit(
-                'new-message', formatMessage(user.username, 'has left the chat')
+                'new-message', formatMessage("bot",`${user.username} has left the chat`)
             );
             io.to(user.room).emit('roomUsers',{
                 room: user.room,

@@ -4,6 +4,7 @@ import {faUserCircle} from '@fortawesome/free-solid-svg-icons/faUserCircle';
 import {faCircle} from '@fortawesome/free-solid-svg-icons/faCircle';
 import {faWindowMinimize} from '@fortawesome/free-solid-svg-icons/faWindowMinimize';
 import {faWindowMaximize} from '@fortawesome/free-solid-svg-icons/faWindowMaximize';
+import {faUsers} from '@fortawesome/free-solid-svg-icons/faUsers'
 
 interface Country {
   name: string;
@@ -51,11 +52,12 @@ export class AppComponent implements OnInit{
   user: string;
   online: boolean;
   faUser = faUserCircle;
+  fafaUser = faUsers;
   faCircle = faCircle;
   faMax = faWindowMaximize;
   faMin = faWindowMinimize;
   countries = COUNTRIES;
-  
+  show: boolean= false;
   
 
   constructor(private chatService: ChatService){
@@ -72,7 +74,6 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.chatService.getMessages()
     .subscribe((message)=>{
-      console.log(message);
       this.messages.push(message);
     });
     this.chatService.getStatus().subscribe((status)=>{
@@ -84,6 +85,10 @@ export class AppComponent implements OnInit{
     this.online = true;
     this.chatService.joinChat({username: this.user,room:'04'});
 
+  }
+  public hide(){
+    
+    this.show= !this.show;
   }
  
 
