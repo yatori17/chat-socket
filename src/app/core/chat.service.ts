@@ -7,6 +7,9 @@ export class ChatService {
     constructor(){
         this.socket = io(this.url);
     }
+    public joinChat(data){
+        this.socket.emit('joinRoom',data);
+    }
     public sendMessage(message){
         this.socket.emit('new-message', message);
     }
@@ -15,14 +18,18 @@ export class ChatService {
     }
     public getStatus= () => {
         return Observable.create((observer)=>{
-            this.socket.on('status',(status) =>{
+            this.socket.on('roomUsers',(status) =>{
+                console.log(status)
                 observer.next(status);
             })
         })
     }
+    
     public getMessages = () =>{
+        console.log("AQUI")
         return Observable.create((observer)=>{
             this.socket.on('new-message', (message) =>{
+                console.log(message)
                 observer.next(message);
             })
         })

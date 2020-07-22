@@ -5,15 +5,15 @@
   <div class="card-header" style="background-color: #5800fb;text-align: center;" >Chat</div>
   <div class= "scroll">
   <div class="card-body">
-    <div *ngFor = "let user of users">
-      <p><fa-icon [icon]="faCircle" style="color: green;"></fa-icon> {{user.name}} is online</p>
+    <div *ngFor = "let user of users[0].users">
+      <p><fa-icon [icon]="faCircle" style="color: green;"></fa-icon> {{user.username}} is online</p>
     </div> 
     <div *ngFor = "let message of messages">
     <div class='header'style="background-color: white"> 
       <div class="card border-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header"><fa-icon [icon]="faUser" style="color: grey;"></fa-icon> {{message.user}}</div>
+        <div class="card-header"><fa-icon [icon]="faUser" style="color: grey;"></fa-icon> {{message.username}}</div>
         <div class="card-body text-dark">
-          <p class="card-text">{{message.content}}</p>
+          <p class="card-text">{{message.text}}</p>
         </div>
       </div>
   </div>
